@@ -16,7 +16,7 @@ class TourController extends Controller
     {
         // Travel
         // return Travel::all();
-        // return Tour::where('travel_id', $travel->id);
+        //  Tour::where('travel_id', $travel->id);
     }
 
     /**

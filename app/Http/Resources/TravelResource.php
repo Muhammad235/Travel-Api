@@ -20,7 +20,7 @@ class TravelResource extends JsonResource
             'slug' => $this->slug,
             'description' => $this->description,
             'number_of_days' => $this->number_of_days,
-            // 'description' => $this->slug,
+            'number_of_nights' => ($this->number_of_days) - 1,
         ];
     }
 }
