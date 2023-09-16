@@ -61,7 +61,7 @@ Name
 
 Description
 
-Number of 
+Number of days
 
 Number of nights (virtual, computed by numberOfDays - 1)
 
