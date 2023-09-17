@@ -6,64 +6,15 @@ use App\Models\Tour;
 use App\Models\Travel;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Resources\TourResource;
 
 class TourController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index(Travel $travel)
-    {
-        // Travel
-        // return Travel::all();
-        //  Tour::where('travel_id', $travel->id);
-    }
+    public function index(Travel $travel){
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+        // return Tour::where('travel_id', $travel->id)->orderBy('starting_date')->paginate();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        $tours = $travel->tours()->orderBy('starting_date')->paginate();
+        return TourResource::collection($tours);
     }
 }
