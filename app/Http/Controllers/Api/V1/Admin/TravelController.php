@@ -21,34 +21,17 @@ class TravelController extends Controller
         $travel = Travel::create($request->validated());
 
         return new TravelResource($travel);
-
-        // return "hello";
-
-        // dd($request);
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(TravelRequest $request, Travel $travel)
     {
-        //
+       $updatedTravel =  $travel->update($request->validated());
+
+       return new TravelResource($updatedTravel);
+
     }
 
     /**

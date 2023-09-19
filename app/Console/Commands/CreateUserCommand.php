@@ -42,23 +42,25 @@ class CreateUserCommand extends Command
             return -1;
         }
 
-        $validator = Validator::make($user, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'max:255', 'email', 'umique:'. User::class],
-            'password' => ['required', Password::defaults()],
-        ]);
+        // $validator = Validator::make($user, [
+        //     'name' => ['required', 'string', 'max:255'],
+        //     'email' => ['required', 'string', 'max:255', 'email', 'umique:'. User::class],
+        //     'password' => ['required', Password::defaults()],
+        // ]);
 
-        if ($validator->fails()) {
-            foreach($validator->errors->all() as $error){
-                $this->error($error);
-            }
+        // if ($validator->fails()) {
+        //     foreach($validator->errors->all() as $error){
+        //         $this->error($error);
+        //     }
 
-            return -1;
-        }
+        //     return -1;
+        // }
 
-        $newUser = User::create($user);
+        // $newUser = User::create($user);
 
-        $this->info('User'. $user['email'] .'created successfully');
+         User::create($user);
+
+        $this->info('User '. $user['email'] .'created successfully');
 
         return 0;
     }
