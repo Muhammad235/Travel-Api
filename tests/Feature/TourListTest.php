@@ -44,7 +44,22 @@ class TourListTest extends TestCase
         // checks whether the JSON response contains the specified key-value pairs
         $response->assertJsonFragment(['price' => '123.45']);
     }
+
+    public function test_tours_list_returns_pagination(): void
+    {
+        //create 31 records
+        $travel =Travel::factory()->create();
+        $tour = Tour::factory()->create(['travel_id' => $travel->id]);
+
+        $response = $this->get('/api/v1/travels/'. $travel->slug .'/tours');
+
+        $response->assertStatus(200);
+
+        //check if it returned 15 reocords per page
+        $response->assertJsonCount(1, 'data');
+
+        //check if the last page is 3
+        $response->assertJsonPath('meta.last_page', 1);
+    }
 }
-
-
 
