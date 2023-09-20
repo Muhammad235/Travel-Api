@@ -2,15 +2,13 @@
 
 namespace App\Http\Controllers\Api\V1\Admin;
 
-use App\Models\Travel;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TravelRequest;
 use App\Http\Resources\TravelResource;
+use App\Models\Travel;
 
 class TravelController extends Controller
 {
-
     /**
      * Store a newly created resource in storage.
      */
@@ -28,9 +26,9 @@ class TravelController extends Controller
      */
     public function update(TravelRequest $request, Travel $travel)
     {
-       $updatedTravel =  $travel->update($request->validated());
+        $updatedTravel = $travel->update($request->validated());
 
-       return new TravelResource($updatedTravel);
+        return new TravelResource($updatedTravel);
 
     }
 

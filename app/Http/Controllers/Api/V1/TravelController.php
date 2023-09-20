@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api\V1;
 
-use App\Models\Travel;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\TravelResource;
+use App\Models\Travel;
+use Illuminate\Http\Request;
 
 class TravelController extends Controller
 {

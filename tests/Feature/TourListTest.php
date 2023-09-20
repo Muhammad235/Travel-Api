@@ -2,11 +2,10 @@
 
 namespace Tests\Feature;
 
-use Tests\TestCase;
 use App\Models\Tour;
 use App\Models\Travel;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class TourListTest extends TestCase
 {
@@ -17,7 +16,7 @@ class TourListTest extends TestCase
         $travel = Travel::factory()->create();
         $tour = Tour::factory()->create(['travel_id' => $travel->id]);
 
-        $response = $this->get('/api/v1/travels/'. $travel->slug .'/tours');
+        $response = $this->get('/api/v1/travels/'.$travel->slug.'/tours');
 
         $response->assertStatus(200);
         //check if it returned 1 reocords per page
@@ -35,7 +34,7 @@ class TourListTest extends TestCase
             'price' => 123.45,
         ]);
 
-        $response = $this->get('/api/v1/travels/'. $travel->slug .'/tours');
+        $response = $this->get('/api/v1/travels/'.$travel->slug.'/tours');
 
         $response->assertStatus(200);
         //check if it returned 1 reocords per page
@@ -48,10 +47,10 @@ class TourListTest extends TestCase
     public function test_tours_list_returns_pagination(): void
     {
         //create 31 records
-        $travel =Travel::factory()->create();
+        $travel = Travel::factory()->create();
         $tour = Tour::factory()->create(['travel_id' => $travel->id]);
 
-        $response = $this->get('/api/v1/travels/'. $travel->slug .'/tours');
+        $response = $this->get('/api/v1/travels/'.$travel->slug.'/tours');
 
         $response->assertStatus(200);
 
@@ -62,4 +61,3 @@ class TourListTest extends TestCase
         $response->assertJsonPath('meta.last_page', 1);
     }
 }
-

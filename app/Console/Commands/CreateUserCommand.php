@@ -5,8 +5,8 @@ namespace App\Console\Commands;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Console\Command;
-use Illuminate\Validation\Validator;
 use Illuminate\Validation\Rules\Password;
+use Illuminate\Validation\Validator;
 
 class CreateUserCommand extends Command
 {
@@ -36,7 +36,7 @@ class CreateUserCommand extends Command
         $roleName = $this->choice('Role of the new user', ['admin', 'editor'], default: 1);
         $role = Role::where('name', $roleName)->first();
 
-        if (!$role) {
+        if (! $role) {
             $this->error('Role not found');
 
             return -1;
@@ -58,9 +58,9 @@ class CreateUserCommand extends Command
 
         // $newUser = User::create($user);
 
-         User::create($user);
+        User::create($user);
 
-        $this->info('User '. $user['email'] .'created successfully');
+        $this->info('User '.$user['email'].'created successfully');
 
         return 0;
     }

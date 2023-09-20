@@ -2,16 +2,15 @@
 
 namespace App\Models;
 
-use App\Models\Tour;
-use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Travel extends Model
 {
-    use HasFactory, Sluggable, HasUuids;
+    use HasFactory, HasUuids, Sluggable;
 
     protected $table = 'travels';
 
@@ -27,8 +26,8 @@ class Travel extends Model
     {
         return [
             'slug' => [
-                'source' => 'name'
-            ]
+                'source' => 'name',
+            ],
         ];
     }
 
@@ -42,5 +41,3 @@ class Travel extends Model
     //     return 'slug';
     // }
 }
-
-
